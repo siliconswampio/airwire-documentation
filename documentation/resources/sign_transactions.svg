@@ -1,0 +1,128 @@
+<svg width="415pt" height="251pt" viewBox="0.00 0.00 414.89 251.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 247)">
+<title>%3</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-247 410.8916,-247 410.8916,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_signed_xact</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="299.8916,-32 299.8916,-140 398.8916,-140 398.8916,-32 299.8916,-32"></polygon>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_wallet_mgr</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="5,2" points="8,-8 8,-141 261.0433,-141 261.0433,-8 8,-8"></polygon>
+<text text-anchor="middle" x="134.5216" y="-15.8" font-family="Times,serif" font-size="14.00" fill="#000000">Wallet Manager</text>
+</g>
+<!-- signed_xact -->
+<g id="node1" class="node">
+<title>signed_xact</title>
+<polygon fill="transparent" stroke="transparent" points="390.8916,-132 307.8916,-132 307.8916,-94 390.8916,-94 390.8916,-132"></polygon>
+<text text-anchor="middle" x="349.3916" y="-116.8" font-family="Times,serif" font-size="14.00" fill="#000000">Signed</text>
+<text text-anchor="middle" x="349.3916" y="-101.8" font-family="Times,serif" font-size="14.00" fill="#000000">Transaction</text>
+</g>
+<!-- signatures -->
+<g id="node2" class="node">
+<title>signatures</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="390.8916,-76 307.8916,-76 307.8916,-40 390.8916,-40 390.8916,-76"></polygon>
+<text text-anchor="middle" x="349.3916" y="-54.3" font-family="Times,serif" font-size="14.00" fill="#000000">signature(s)</text>
+</g>
+<!-- xact -->
+<g id="node3" class="node">
+<title>xact</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="265.9458,-241 182.9458,-241 182.9458,-205 265.9458,-205 265.9458,-241"></polygon>
+<text text-anchor="middle" x="224.4458" y="-219.3" font-family="Times,serif" font-size="14.00" fill="#000000">Transaction</text>
+</g>
+<!-- sha256 -->
+<g id="node5" class="node">
+<title>sha256</title>
+<ellipse fill="none" stroke="#000000" cx="224.4458" cy="-169" rx="47.3916" ry="18"></ellipse>
+<text text-anchor="middle" x="224.4458" y="-165.3" font-family="Times,serif" font-size="14.00" fill="#000000">SHA-256</text>
+</g>
+<!-- xact&#45;&gt;sha256 -->
+<g id="edge1" class="edge">
+<title>xact-&gt;sha256</title>
+<path fill="none" stroke="#000000" d="M224.8916,-204.7181C224.8916,-204.7181 224.8916,-192.2631 224.8916,-192.2631"></path>
+<polygon fill="#000000" stroke="#000000" points="226.6417,-192.2631 224.8916,-187.2631 223.1417,-192.2631 226.6417,-192.2631"></polygon>
+</g>
+<!-- chainID -->
+<g id="node4" class="node">
+<title>chainID</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="113.5,-187 43.5,-187 43.5,-151 113.5,-151 113.5,-187"></polygon>
+<text text-anchor="middle" x="78.5" y="-165.3" font-family="Times,serif" font-size="14.00" fill="#000000">Chain ID</text>
+</g>
+<!-- chainID&#45;&gt;sha256 -->
+<g id="edge2" class="edge">
+<title>chainID-&gt;sha256</title>
+<path fill="none" stroke="#000000" d="M113.8294,-169C113.8294,-169 171.7587,-169 171.7587,-169"></path>
+<polygon fill="#000000" stroke="#000000" points="171.7587,-170.7501 176.7587,-169 171.7586,-167.2501 171.7587,-170.7501"></polygon>
+</g>
+<!-- xact_dig -->
+<g id="node6" class="node">
+<title>xact_dig</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="390.8916,-188 307.8916,-188 307.8916,-150 390.8916,-150 390.8916,-188"></polygon>
+<text text-anchor="middle" x="349.3916" y="-172.8" font-family="Times,serif" font-size="14.00" fill="#000000">Transaction</text>
+<text text-anchor="middle" x="349.3916" y="-157.8" font-family="Times,serif" font-size="14.00" fill="#000000">Digest</text>
+</g>
+<!-- sha256&#45;&gt;xact_dig -->
+<g id="edge3" class="edge">
+<title>sha256-&gt;xact_dig</title>
+<path fill="none" stroke="#000000" d="M269.2012,-175C269.2012,-175 302.8651,-175 302.8651,-175"></path>
+<polygon fill="#000000" stroke="#000000" points="302.8651,-176.7501 307.8651,-175 302.8651,-173.2501 302.8651,-176.7501"></polygon>
+</g>
+<!-- sign -->
+<g id="node10" class="node">
+<title>sign</title>
+<ellipse fill="none" stroke="#000000" cx="224.4458" cy="-114" rx="28.6953" ry="18"></ellipse>
+<text text-anchor="middle" x="224.4458" y="-110.3" font-family="Times,serif" font-size="14.00" fill="#000000">Sign</text>
+</g>
+<!-- xact_dig&#45;&gt;sign -->
+<g id="edge6" class="edge">
+<title>xact_dig-&gt;sign</title>
+<path fill="none" stroke="#000000" d="M307.7435,-163C297.744,-163 289.8916,-163 289.8916,-163 289.8916,-163 289.8916,-114 289.8916,-114 289.8916,-114 258.3418,-114 258.3418,-114"></path>
+<polygon fill="#000000" stroke="#000000" points="258.3418,-112.2501 253.3418,-114 258.3417,-115.7501 258.3418,-112.2501"></polygon>
+</g>
+<!-- pub_key -->
+<g id="node7" class="node">
+<title>pub_key</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="141,-243 16,-243 16,-205 141,-205 141,-243"></polygon>
+<text text-anchor="middle" x="78.5" y="-227.8" font-family="Times,serif" font-size="14.00" fill="#000000">Signing account(s)</text>
+<text text-anchor="middle" x="78.5" y="-212.8" font-family="Times,serif" font-size="14.00" fill="#000000">Public Key(s)</text>
+</g>
+<!-- wallet -->
+<g id="node9" class="node">
+<title>wallet</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="141,-77 16,-77 16,-39 141,-39 141,-77"></polygon>
+<text text-anchor="middle" x="78.5" y="-61.8" font-family="Times,serif" font-size="14.00" fill="#000000">Signing account(s)</text>
+<text text-anchor="middle" x="78.5" y="-46.8" font-family="Times,serif" font-size="14.00" fill="#000000">Wallet</text>
+</g>
+<!-- pub_key&#45;&gt;wallet -->
+<g id="edge4" class="edge">
+<title>pub_key-&gt;wallet</title>
+<path fill="none" stroke="#000000" d="M141.0141,-223C151.9432,-223 159.8916,-223 159.8916,-223 159.8916,-223 159.8916,-52 159.8916,-52 159.8916,-52 146.0141,-52 146.0141,-52"></path>
+<polygon fill="#000000" stroke="#000000" points="146.0142,-50.2501 141.0141,-52 146.0141,-53.7501 146.0142,-50.2501"></polygon>
+</g>
+<!-- pri_key -->
+<g id="node8" class="node">
+<title>pri_key</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="141,-133 16,-133 16,-95 141,-95 141,-133"></polygon>
+<text text-anchor="middle" x="78.5" y="-117.8" font-family="Times,serif" font-size="14.00" fill="#000000">Signing account(s)</text>
+<text text-anchor="middle" x="78.5" y="-102.8" font-family="Times,serif" font-size="14.00" fill="#000000">Private Key(s)</text>
+</g>
+<!-- pri_key&#45;&gt;sign -->
+<g id="edge7" class="edge">
+<title>pri_key-&gt;sign</title>
+<path fill="none" stroke="#000000" d="M141.2411,-114C141.2411,-114 190.7966,-114 190.7966,-114"></path>
+<polygon fill="#000000" stroke="#000000" points="190.7966,-115.7501 195.7966,-114 190.7966,-112.2501 190.7966,-115.7501"></polygon>
+</g>
+<!-- wallet&#45;&gt;pri_key -->
+<g id="edge5" class="edge">
+<title>wallet-&gt;pri_key</title>
+<path fill="none" stroke="#000000" d="M78.8916,-77.272C78.8916,-77.272 78.8916,-89.8822 78.8916,-89.8822"></path>
+<polygon fill="#000000" stroke="#000000" points="77.1417,-89.8821 78.8916,-94.8822 80.6417,-89.8822 77.1417,-89.8821"></polygon>
+</g>
+<!-- sign&#45;&gt;signatures -->
+<g id="edge8" class="edge">
+<title>sign-&gt;signatures</title>
+<path fill="none" stroke="#000000" d="M224.8916,-95.9489C224.8916,-81.627 224.8916,-64 224.8916,-64 224.8916,-64 302.5885,-64 302.5885,-64"></path>
+<polygon fill="#000000" stroke="#000000" points="302.5886,-65.7501 307.5885,-64 302.5885,-62.2501 302.5886,-65.7501"></polygon>
+</g>
+</g>
+</svg>

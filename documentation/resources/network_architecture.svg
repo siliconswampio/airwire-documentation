@@ -1,0 +1,211 @@
+<svg width="485pt" height="286pt" viewBox="0.00 0.00 485.00 285.74" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 281.7401)">
+<title>%3</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-281.7401 481,-281.7401 481,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_node</title>
+<polygon fill="none" stroke="#000000" points="8,-8 8,-269.7401 228,-269.7401 228,-8 8,-8"></polygon>
+<text text-anchor="middle" x="118" y="-254.5401" font-family="Times,serif" font-size="14.00" fill="#000000">Node A (node)</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_chain</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="5,2" points="16,-16 16,-83 220,-83 220,-16 16,-16"></polygon>
+<text text-anchor="middle" x="118" y="-23.8" font-family="Times,serif" font-size="14.00" fill="#000000">local chain</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_peer</title>
+<polygon fill="none" stroke="#000000" points="249,-8 249,-269.7401 469,-269.7401 469,-8 249,-8"></polygon>
+<text text-anchor="middle" x="359" y="-254.5401" font-family="Times,serif" font-size="14.00" fill="#000000">Node B (peer)</text>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_chain2</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="5,2" points="257,-16 257,-83 461,-83 461,-16 257,-16"></polygon>
+<text text-anchor="middle" x="359" y="-23.8" font-family="Times,serif" font-size="14.00" fill="#000000">local chain</text>
+</g>
+<!-- net_plugin -->
+<g id="node1" class="node">
+<title>net_plugin</title>
+<ellipse fill="#d3d3d3" stroke="#000000" cx="126" cy="-211.8701" rx="38.7821" ry="26.7407"></ellipse>
+<text text-anchor="middle" x="126" y="-215.6701" font-family="Times,serif" font-size="14.00" fill="#000000">Net</text>
+<text text-anchor="middle" x="126" y="-200.6701" font-family="Times,serif" font-size="14.00" fill="#000000">Plugin</text>
+</g>
+<!-- controller -->
+<g id="node2" class="node">
+<title>controller</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="118.5,-149 43.5,-149 43.5,-111 118.5,-111 118.5,-149"></polygon>
+<text text-anchor="middle" x="81" y="-133.8" font-family="Times,serif" font-size="14.00" fill="#000000">Chain</text>
+<text text-anchor="middle" x="81" y="-118.8" font-family="Times,serif" font-size="14.00" fill="#000000">Controller</text>
+</g>
+<!-- net_plugin&#45;&gt;controller -->
+<g id="edge5" class="edge">
+<title>net_plugin-&gt;controller</title>
+<path fill="none" stroke="#000000" d="M112.0084,-186.4146C106.4355,-176.2757 100.0459,-164.6508 94.5205,-154.5984"></path>
+<polygon fill="#000000" stroke="#000000" points="96.281,-153.4414 91.5505,-149.1949 92.6003,-155.4645 96.281,-153.4414"></polygon>
+</g>
+<!-- serializer -->
+<g id="node3" class="node">
+<title>serializer</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="205.5,-149 136.5,-149 136.5,-111 205.5,-111 205.5,-149"></polygon>
+<text text-anchor="middle" x="171" y="-133.8" font-family="Times,serif" font-size="14.00" fill="#000000">Net</text>
+<text text-anchor="middle" x="171" y="-118.8" font-family="Times,serif" font-size="14.00" fill="#000000">Serializer</text>
+</g>
+<!-- net_plugin&#45;&gt;serializer -->
+<g id="edge6" class="edge">
+<title>net_plugin-&gt;serializer</title>
+<path fill="none" stroke="#000000" d="M139.9916,-186.4146C145.5645,-176.2757 151.9541,-164.6508 157.4795,-154.5984"></path>
+<polygon fill="#000000" stroke="#000000" points="159.3997,-155.4645 160.4495,-149.1949 155.719,-153.4414 159.3997,-155.4645"></polygon>
+</g>
+<!-- b1 -->
+<g id="node5" class="node">
+<title>b1</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="92,-72 70,-72 70,-50 92,-50 92,-72"></polygon>
+</g>
+<!-- controller&#45;&gt;b1 -->
+<g id="edge7" class="edge">
+<title>controller-&gt;b1</title>
+<path fill="none" stroke="#000000" d="M81,-110.7797C81,-104.0405 81,-96.3266 81,-89.0158"></path>
+<polygon fill="#000000" stroke="#000000" points="83.1001,-88.9996 81,-82.9996 78.9001,-88.9997 83.1001,-88.9996"></polygon>
+</g>
+<!-- serializer2 -->
+<g id="node10" class="node">
+<title>serializer2</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="346.5,-149 277.5,-149 277.5,-111 346.5,-111 346.5,-149"></polygon>
+<text text-anchor="middle" x="312" y="-133.8" font-family="Times,serif" font-size="14.00" fill="#000000">Net</text>
+<text text-anchor="middle" x="312" y="-118.8" font-family="Times,serif" font-size="14.00" fill="#000000">Serializer</text>
+</g>
+<!-- serializer&#45;&gt;serializer2 -->
+<g id="edge15" class="edge">
+<title>serializer-&gt;serializer2</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M211.8369,-130C231.5579,-130 251.2788,-130 270.9998,-130"></path>
+<polygon fill="#000000" stroke="#000000" points="211.6993,-127.9001 205.6992,-130 211.6992,-132.1001 211.6993,-127.9001"></polygon>
+<polygon fill="#000000" stroke="#000000" points="271.1201,-132.1001 277.1201,-130 271.12,-127.9001 271.1201,-132.1001"></polygon>
+</g>
+<!-- b0 -->
+<g id="node4" class="node">
+<title>b0</title>
+<polygon fill="none" stroke="transparent" points="52,-75 24,-75 24,-47 52,-47 52,-75"></polygon>
+<text text-anchor="middle" x="38" y="-57.3" font-family="Times,serif" font-size="14.00" fill="#000000">...</text>
+</g>
+<!-- b0&#45;&gt;b1 -->
+<g id="edge1" class="edge">
+<title>b0-&gt;b1</title>
+<path fill="none" stroke="#000000" d="M57.3359,-61C61.4622,-61 65.5884,-61 69.7146,-61"></path>
+<polygon fill="#000000" stroke="#000000" points="57.1094,-59.2501 52.1094,-61 57.1093,-62.7501 57.1094,-59.2501"></polygon>
+</g>
+<!-- b2 -->
+<g id="node6" class="node">
+<title>b2</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="132,-72 110,-72 110,-50 132,-50 132,-72"></polygon>
+</g>
+<!-- b1&#45;&gt;b2 -->
+<g id="edge2" class="edge">
+<title>b1-&gt;b2</title>
+<path fill="none" stroke="#000000" d="M97.4511,-61C101.5573,-61 105.6634,-61 109.7695,-61"></path>
+<polygon fill="#000000" stroke="#000000" points="97.25,-59.2501 92.25,-61 97.25,-62.7501 97.25,-59.2501"></polygon>
+</g>
+<!-- b3 -->
+<g id="node7" class="node">
+<title>b3</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="172,-72 150,-72 150,-50 172,-50 172,-72"></polygon>
+</g>
+<!-- b2&#45;&gt;b3 -->
+<g id="edge3" class="edge">
+<title>b2-&gt;b3</title>
+<path fill="none" stroke="#000000" d="M137.4511,-61C141.5573,-61 145.6634,-61 149.7695,-61"></path>
+<polygon fill="#000000" stroke="#000000" points="137.25,-59.2501 132.25,-61 137.25,-62.7501 137.25,-59.2501"></polygon>
+</g>
+<!-- b4 -->
+<g id="node8" class="node">
+<title>b4</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="212,-72 190,-72 190,-50 212,-50 212,-72"></polygon>
+</g>
+<!-- b3&#45;&gt;b4 -->
+<g id="edge4" class="edge">
+<title>b3-&gt;b4</title>
+<path fill="none" stroke="#000000" d="M177.4511,-61C181.5573,-61 185.6634,-61 189.7695,-61"></path>
+<polygon fill="#000000" stroke="#000000" points="177.25,-59.2501 172.25,-61 177.25,-62.7501 177.25,-59.2501"></polygon>
+</g>
+<!-- net_plugin2 -->
+<g id="node9" class="node">
+<title>net_plugin2</title>
+<ellipse fill="#d3d3d3" stroke="#000000" cx="357" cy="-211.8701" rx="38.7821" ry="26.7407"></ellipse>
+<text text-anchor="middle" x="357" y="-215.6701" font-family="Times,serif" font-size="14.00" fill="#000000">Net</text>
+<text text-anchor="middle" x="357" y="-200.6701" font-family="Times,serif" font-size="14.00" fill="#000000">Plugin</text>
+</g>
+<!-- net_plugin2&#45;&gt;serializer2 -->
+<g id="edge12" class="edge">
+<title>net_plugin2-&gt;serializer2</title>
+<path fill="none" stroke="#000000" d="M343.0084,-186.4146C337.4355,-176.2757 331.0459,-164.6508 325.5205,-154.5984"></path>
+<polygon fill="#000000" stroke="#000000" points="327.281,-153.4414 322.5505,-149.1949 323.6003,-155.4645 327.281,-153.4414"></polygon>
+</g>
+<!-- controller2 -->
+<g id="node11" class="node">
+<title>controller2</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="439.5,-149 364.5,-149 364.5,-111 439.5,-111 439.5,-149"></polygon>
+<text text-anchor="middle" x="402" y="-133.8" font-family="Times,serif" font-size="14.00" fill="#000000">Chain</text>
+<text text-anchor="middle" x="402" y="-118.8" font-family="Times,serif" font-size="14.00" fill="#000000">Controller</text>
+</g>
+<!-- net_plugin2&#45;&gt;controller2 -->
+<g id="edge13" class="edge">
+<title>net_plugin2-&gt;controller2</title>
+<path fill="none" stroke="#000000" d="M370.9916,-186.4146C376.5645,-176.2757 382.9541,-164.6508 388.4795,-154.5984"></path>
+<polygon fill="#000000" stroke="#000000" points="390.3997,-155.4645 391.4495,-149.1949 386.719,-153.4414 390.3997,-155.4645"></polygon>
+</g>
+<!-- a3 -->
+<g id="node15" class="node">
+<title>a3</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="413,-72 391,-72 391,-50 413,-50 413,-72"></polygon>
+</g>
+<!-- controller2&#45;&gt;a3 -->
+<g id="edge14" class="edge">
+<title>controller2-&gt;a3</title>
+<path fill="none" stroke="#000000" d="M402,-110.7797C402,-104.0405 402,-96.3266 402,-89.0158"></path>
+<polygon fill="#000000" stroke="#000000" points="404.1001,-88.9996 402,-82.9996 399.9001,-88.9997 404.1001,-88.9996"></polygon>
+</g>
+<!-- a0 -->
+<g id="node12" class="node">
+<title>a0</title>
+<polygon fill="none" stroke="transparent" points="293,-75 265,-75 265,-47 293,-47 293,-75"></polygon>
+<text text-anchor="middle" x="279" y="-57.3" font-family="Times,serif" font-size="14.00" fill="#000000">...</text>
+</g>
+<!-- a1 -->
+<g id="node13" class="node">
+<title>a1</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="333,-72 311,-72 311,-50 333,-50 333,-72"></polygon>
+</g>
+<!-- a0&#45;&gt;a1 -->
+<g id="edge8" class="edge">
+<title>a0-&gt;a1</title>
+<path fill="none" stroke="#000000" d="M298.3359,-61C302.4622,-61 306.5884,-61 310.7146,-61"></path>
+<polygon fill="#000000" stroke="#000000" points="298.1094,-59.2501 293.1094,-61 298.1093,-62.7501 298.1094,-59.2501"></polygon>
+</g>
+<!-- a2 -->
+<g id="node14" class="node">
+<title>a2</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="373,-72 351,-72 351,-50 373,-50 373,-72"></polygon>
+</g>
+<!-- a1&#45;&gt;a2 -->
+<g id="edge9" class="edge">
+<title>a1-&gt;a2</title>
+<path fill="none" stroke="#000000" d="M338.4511,-61C342.5573,-61 346.6634,-61 350.7695,-61"></path>
+<polygon fill="#000000" stroke="#000000" points="338.25,-59.2501 333.25,-61 338.25,-62.7501 338.25,-59.2501"></polygon>
+</g>
+<!-- a2&#45;&gt;a3 -->
+<g id="edge10" class="edge">
+<title>a2-&gt;a3</title>
+<path fill="none" stroke="#000000" d="M378.4511,-61C382.5573,-61 386.6634,-61 390.7695,-61"></path>
+<polygon fill="#000000" stroke="#000000" points="378.25,-59.2501 373.25,-61 378.25,-62.7501 378.25,-59.2501"></polygon>
+</g>
+<!-- a4 -->
+<g id="node16" class="node">
+<title>a4</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="453,-72 431,-72 431,-50 453,-50 453,-72"></polygon>
+</g>
+<!-- a3&#45;&gt;a4 -->
+<g id="edge11" class="edge">
+<title>a3-&gt;a4</title>
+<path fill="none" stroke="#000000" d="M418.4511,-61C422.5573,-61 426.6634,-61 430.7695,-61"></path>
+<polygon fill="#000000" stroke="#000000" points="418.25,-59.2501 413.25,-61 418.25,-62.7501 418.25,-59.2501"></polygon>
+</g>
+</g>
+</svg>

@@ -1,0 +1,136 @@
+<svg width="442pt" height="297pt" viewBox="0.00 0.00 442.00 297.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 293)">
+<title>%3</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-293 438,-293 438,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_instance</title>
+<polygon fill="none" stroke="#000000" points="8,-8 8,-281 426,-281 426,-8 8,-8"></polygon>
+<text text-anchor="middle" x="217" y="-265.8" font-family="Times,serif" font-size="14.00" fill="#000000">Action Instance</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_w</title>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_perms</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="5,2" points="16,-63 16,-203 418,-203 418,-63 16,-63"></polygon>
+<text text-anchor="middle" x="217" y="-187.8" font-family="Times,serif" font-size="14.00" fill="#000000">authorization list</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_perm_n</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="5,2" points="304,-71 304,-172 410,-172 410,-71 304,-71"></polygon>
+<text text-anchor="middle" x="357" y="-156.8" font-family="Times,serif" font-size="14.00" fill="#000000">auth n</text>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_perm_e</title>
+<polygon fill="none" stroke="transparent" stroke-dasharray="5,2" points="252,-110 252,-149 296,-149 296,-110 252,-110"></polygon>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_perm_2</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="5,2" points="138,-71 138,-172 244,-172 244,-71 138,-71"></polygon>
+<text text-anchor="middle" x="191" y="-156.8" font-family="Times,serif" font-size="14.00" fill="#000000">auth 2</text>
+</g>
+<g id="clust7" class="cluster">
+<title>cluster_perm_1</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="5,2" points="24,-71 24,-172 130,-172 130,-71 24,-71"></polygon>
+<text text-anchor="middle" x="77" y="-156.8" font-family="Times,serif" font-size="14.00" fill="#000000">auth 1</text>
+</g>
+<g id="clust9" class="cluster">
+<title>cluster_data</title>
+</g>
+<!-- empty_node -->
+<g id="node1" class="node">
+<title>empty_node</title>
+<polygon fill="none" stroke="transparent" points="410.5,-239.5 331.5,-239.5 331.5,-221.5 410.5,-221.5 410.5,-239.5"></polygon>
+</g>
+<!-- act_name -->
+<g id="node2" class="node">
+<title>act_name</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="317,-242 231,-242 231,-219 317,-219 317,-242"></polygon>
+<text text-anchor="middle" x="274" y="-226.8" font-family="Times,serif" font-size="14.00" fill="#000000">action name</text>
+</g>
+<!-- acct_name -->
+<g id="node3" class="node">
+<title>acct_name</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="216.5,-242 121.5,-242 121.5,-219 216.5,-219 216.5,-242"></polygon>
+<text text-anchor="middle" x="169" y="-226.8" font-family="Times,serif" font-size="14.00" fill="#000000">account name</text>
+</g>
+<!-- a2 -->
+<g id="node7" class="node">
+<title>a2</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="210,-141 154,-141 154,-118 210,-118 210,-141"></polygon>
+<text text-anchor="middle" x="182" y="-125.8" font-family="Times,serif" font-size="14.00" fill="#000000">actor 2</text>
+</g>
+<!-- acct_name&#45;&gt;a2 -->
+<g id="edge4" class="edge">
+<title>acct_name-&gt;a2</title>
+<path fill="none" stroke="transparent" d="M170.4913,-218.914C172.7517,-201.3519 177.0628,-167.8579 179.719,-147.2217"></path>
+<polygon fill="transparent" stroke="transparent" points="181.8029,-147.481 180.4861,-141.262 177.6372,-146.9448 181.8029,-147.481"></polygon>
+</g>
+<!-- an -->
+<g id="node4" class="node">
+<title>an</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="385,-141 329,-141 329,-118 385,-118 385,-141"></polygon>
+<text text-anchor="middle" x="357" y="-125.8" font-family="Times,serif" font-size="14.00" fill="#000000">actor n</text>
+</g>
+<!-- pn -->
+<g id="node5" class="node">
+<title>pn</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="402,-102 312,-102 312,-79 402,-79 402,-102"></polygon>
+<text text-anchor="middle" x="357" y="-86.8" font-family="Times,serif" font-size="14.00" fill="#000000">permission n</text>
+</g>
+<!-- an&#45;&gt;pn -->
+<g id="edge1" class="edge">
+<title>an-&gt;pn</title>
+<path fill="none" stroke="transparent" d="M357,-117.5868C357,-114.6607 357,-111.4646 357,-108.3267"></path>
+<polygon fill="transparent" stroke="transparent" points="359.1001,-108.0726 357,-102.0726 354.9001,-108.0727 359.1001,-108.0726"></polygon>
+</g>
+<!-- ae -->
+<g id="node6" class="node">
+<title>ae</title>
+<polygon fill="none" stroke="transparent" points="288,-141 260,-141 260,-118 288,-118 288,-141"></polygon>
+<text text-anchor="middle" x="274" y="-125.8" font-family="Times,serif" font-size="14.00" fill="#000000">...</text>
+</g>
+<!-- p2 -->
+<g id="node8" class="node">
+<title>p2</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="236,-102 146,-102 146,-79 236,-79 236,-102"></polygon>
+<text text-anchor="middle" x="191" y="-86.8" font-family="Times,serif" font-size="14.00" fill="#000000">permission 2</text>
+</g>
+<!-- a2&#45;&gt;p2 -->
+<g id="edge2" class="edge">
+<title>a2-&gt;p2</title>
+<path fill="none" stroke="transparent" d="M184.7492,-117.5868C185.4245,-114.6607 186.162,-111.4646 186.8862,-108.3267"></path>
+<polygon fill="transparent" stroke="transparent" points="189.0264,-108.3912 188.3294,-102.0726 184.9339,-107.4467 189.0264,-108.3912"></polygon>
+</g>
+<!-- act_data -->
+<g id="node11" class="node">
+<title>act_data</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="402,-47 24,-47 24,-24 402,-24 402,-47"></polygon>
+<text text-anchor="middle" x="213" y="-31.8" font-family="Times,serif" font-size="14.00" fill="#000000">action data</text>
+</g>
+<!-- p2&#45;&gt;act_data -->
+<g id="edge5" class="edge">
+<title>p2-&gt;act_data</title>
+<path fill="none" stroke="transparent" d="M195.6656,-78.8359C198.6991,-71.2523 202.7075,-61.2314 206.1055,-52.7361"></path>
+<polygon fill="transparent" stroke="transparent" points="208.0625,-53.4981 208.3411,-47.1473 204.1629,-51.9382 208.0625,-53.4981"></polygon>
+</g>
+<!-- a1 -->
+<g id="node9" class="node">
+<title>a1</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="105,-141 49,-141 49,-118 105,-118 105,-141"></polygon>
+<text text-anchor="middle" x="77" y="-125.8" font-family="Times,serif" font-size="14.00" fill="#000000">actor 1</text>
+</g>
+<!-- p1 -->
+<g id="node10" class="node">
+<title>p1</title>
+<polygon fill="#d3d3d3" stroke="#000000" points="122,-102 32,-102 32,-79 122,-79 122,-102"></polygon>
+<text text-anchor="middle" x="77" y="-86.8" font-family="Times,serif" font-size="14.00" fill="#000000">permission 1</text>
+</g>
+<!-- a1&#45;&gt;p1 -->
+<g id="edge3" class="edge">
+<title>a1-&gt;p1</title>
+<path fill="none" stroke="transparent" d="M77,-117.5868C77,-114.6607 77,-111.4646 77,-108.3267"></path>
+<polygon fill="transparent" stroke="transparent" points="79.1001,-108.0726 77,-102.0726 74.9001,-108.0727 79.1001,-108.0726"></polygon>
+</g>
+</g>
+</svg>
