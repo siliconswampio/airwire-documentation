@@ -15,16 +15,16 @@ The header declares the set of available queries and responses. Here's an exampl
 // my.hpp
 
 #pragma once
-#include <alaio/asset.hpp>
-#include <alaio/block_select.hpp>
+#include <eosio/asset.hpp>
+#include <eosio/block_select.hpp>
 
 // Parameters for a query
 struct get_my_tokens_request {
-    alaio::block_select snapshot_block = {};
-    alaio::name         code           = {};
-    alaio::symbol_code  sym            = {};
-    alaio::name         first_account  = {};
-    alaio::name         last_account   = {};
+    eosio::block_select snapshot_block = {};
+    eosio::name         code           = {};
+    eosio::symbol_code  sym            = {};
+    eosio::name         first_account  = {};
+    eosio::name         last_account   = {};
     uint32_t            max_results    = {};
 };
 
@@ -40,8 +40,8 @@ STRUCT_REFLECT(get_my_tokens_request) {
 
 // A single balance
 struct token_balance {
-    alaio::name           account = {};
-    alaio::extended_asset amount  = {};
+    eosio::name           account = {};
+    eosio::extended_asset amount  = {};
 };
 
 STRUCT_REFLECT(token_balance) {
@@ -52,9 +52,9 @@ STRUCT_REFLECT(token_balance) {
 // Query response
 struct get_my_tokens_response {
     std::vector<token_balance> balances = {};
-    std::optional<alaio::name> more     = {};
+    std::optional<eosio::name> more     = {};
 
-    ALALIB_SERIALIZE(get_my_tokens_response, (balances)(more))
+    EOSLIB_SERIALIZE(get_my_tokens_response, (balances)(more))
 };
 
 STRUCT_REFLECT(get_my_tokens_response) {
@@ -63,15 +63,15 @@ STRUCT_REFLECT(get_my_tokens_response) {
 }
 
 // The set of available queries. Each query has a name which identifies it.
-using my_query_request = alaio::tagged_variant<
-    alaio::serialize_tag_as_name,
-    alaio::tagged_type<"get.my.toks"_n, get_my_tokens_request>>;
+using my_query_request = eosio::tagged_variant<
+    eosio::serialize_tag_as_name,
+    eosio::tagged_type<"get.my.toks"_n, get_my_tokens_request>>;
 
 // The set of available responses. Each response has a name which identifies it.
 // The name must match the request's name.
-using my_query_response = alaio::tagged_variant<
-    alaio::serialize_tag_as_name,
-    alaio::tagged_type<"get.my.toks"_n, get_my_tokens_response>>;
+using my_query_response = eosio::tagged_variant<
+    eosio::serialize_tag_as_name,
+    eosio::tagged_type<"get.my.toks"_n, get_my_tokens_response>>;
 ```
 
 ## Server WASM
@@ -82,15 +82,15 @@ The server WASM uses the database to find answers to incoming requests.
 // my-server.cpp
 
 #include "my.hpp"
-#include <alaio/database.hpp>
-#include <alaio/input_output.hpp>
+#include <eosio/database.hpp>
+#include <eosio/input_output.hpp>
 
 // process this query
-void process(get_my_tokens_request& req, const alaio::database_status& status) {
+void process(get_my_tokens_request& req, const eosio::database_status& status) {
 
     // query the database for a range of contract rows,
     // ordered by (code, table, primary_key, scope)
-    auto s = query_database(alaio::query_contract_row_range_code_table_pk_scope{
+    auto s = query_database(eosio::query_contract_row_range_code_table_pk_scope{
         // look at this point in time
         .snapshot_block = get_block_num(req.snapshot_block, status),
 
@@ -119,15 +119,15 @@ void process(get_my_tokens_request& req, const alaio::database_status& status) {
     get_my_tokens_response response;
 
     // loop through each record
-    alaio::for_each_contract_row<alaio::asset>(s, [&](alaio::contract_row& r, alaio::asset* a) {
+    eosio::for_each_contract_row<eosio::asset>(s, [&](eosio::contract_row& r, eosio::asset* a) {
         // let requestor know how to continue the search
-        response.more = alaio::name{r.scope + 1};
+        response.more = eosio::name{r.scope + 1};
 
         // if the row is present and contains a valid asset, record the result
         if (r.present && a)
             response.balances.push_back({
-                .account = alaio::name{r.scope},
-                .amount = alaio::extended_asset{*a, req.code}
+                .account = eosio::name{r.scope},
+                .amount = eosio::extended_asset{*a, req.code}
             });
 
         // continue the loop
@@ -135,19 +135,19 @@ void process(get_my_tokens_request& req, const alaio::database_status& status) {
     });
 
     // send the result to the requestor
-    alaio::set_output_data(pack(my_query_response{std::move(response)}));
+    eosio::set_output_data(pack(my_query_response{std::move(response)}));
 }
 
 // initialize this WASM
-extern "C" __attribute__((alaio_wasm_entry)) void initialize() {}
+extern "C" __attribute__((eosio_wasm_entry)) void initialize() {}
 
 // wasm-ql calls this for each incoming query
 extern "C" void run_query() {
     // deserialize the request
-    auto request = alaio::unpack<my_query_request>(alaio::get_input_data());
+    auto request = eosio::unpack<my_query_request>(eosio::get_input_data());
 
     // dispatch the request to the appropriate `process` overload
-    std::visit([](auto& x) { process(x, alaio::get_database_status()); }, request.value);
+    std::visit([](auto& x) { process(x, eosio::get_database_status()); }, request.value);
 }
 ```
 
@@ -159,34 +159,34 @@ The client WASM converts between JSON and the binary format the server WASM unde
 // my-client.cpp
 
 #include "my.hpp"
-#include <alaio/input_output.hpp>
-#include <alaio/parse_json.hpp>
-#include <alaio/schema.hpp>
+#include <eosio/input_output.hpp>
+#include <eosio/parse_json.hpp>
+#include <eosio/schema.hpp>
 
 // initialize this WASM
-extern "C" __attribute__((alaio_wasm_entry)) void initialize() {}
+extern "C" __attribute__((eosio_wasm_entry)) void initialize() {}
 
 // produce JSON schema for request
 extern "C" void describe_query_request() {
-    alaio::set_output_data(alaio::make_json_schema<my_query_request>());
+    eosio::set_output_data(eosio::make_json_schema<my_query_request>());
 }
 
 // produce JSON schema for response
 extern "C" void describe_query_response() {
-    alaio::set_output_data(alaio::make_json_schema<my_query_response>());
+    eosio::set_output_data(eosio::make_json_schema<my_query_response>());
 }
 
 // convert request from JSON to binary
 extern "C" void create_query_request() {
-    alaio::set_output_data(pack(std::make_tuple(
+    eosio::set_output_data(pack(std::make_tuple(
         "local"_n,      // must be "local"
         "my"_n,         // name of server WASM
-        alaio::parse_json<my_query_request>(alaio::get_input_data()))));
+        eosio::parse_json<my_query_request>(eosio::get_input_data()))));
 }
 
 // convert response from binary to JSON
 extern "C" void decode_query_response() {
-    alaio::set_output_data(to_json(alaio::unpack<my_query_response>(alaio::get_input_data())));
+    eosio::set_output_data(to_json(eosio::unpack<my_query_response>(eosio::get_input_data())));
 }
 ```
 
@@ -199,25 +199,25 @@ Use the CDT to build the WASMs:
 export HT_TOOLS_DIR=~/history-tools
 
 # Location of the CDT
-export CDT_DIR=/usr/local/alaio.cdt
+export CDT_DIR=/usr/local/eosio.cdt
 
-$CDT_DIR/bin/alaio-cpp                                                      \
+$CDT_DIR/bin/eosio-cpp                                                      \
     -Os                                                                     \
-    -I $HT_TOOLS_DIR/libraries/alaiolib/wasmql                              \
+    -I $HT_TOOLS_DIR/libraries/eosiolib/wasmql                              \
     -I $HT_TOOLS_DIR/external/abiala/external/date/include                  \
-    $HT_TOOLS_DIR/libraries/alaiolib/wasmql/alaio/temp_placeholders.cpp     \
+    $HT_TOOLS_DIR/libraries/eosiolib/wasmql/eosio/temp_placeholders.cpp     \
     -fquery-server                                                          \
-    --alaio-imports=$HT_TOOLS_DIR/libraries/alaiolib/wasmql/server.imports  \
+    --eosio-imports=$HT_TOOLS_DIR/libraries/eosiolib/wasmql/server.imports  \
     my-server.cpp                                                           \
     -o my-server.wasm
 
-$CDT_DIR/bin/alaio-cpp                                                      \
+$CDT_DIR/bin/eosio-cpp                                                      \
     -Os                                                                     \
-    -I $HT_TOOLS_DIR/libraries/alaiolib/wasmql                              \
+    -I $HT_TOOLS_DIR/libraries/eosiolib/wasmql                              \
     -I $HT_TOOLS_DIR/external/abiala/external/date/include                  \
-    $HT_TOOLS_DIR/libraries/alaiolib/wasmql/alaio/temp_placeholders.cpp     \
+    $HT_TOOLS_DIR/libraries/eosiolib/wasmql/eosio/temp_placeholders.cpp     \
     -fquery-client                                                          \
-    --alaio-imports=$HT_TOOLS_DIR/libraries/alaiolib/wasmql/client.imports  \
+    --eosio-imports=$HT_TOOLS_DIR/libraries/eosiolib/wasmql/client.imports  \
     my-client.cpp                                                           \
     -o my-client.wasm
 ```
@@ -247,10 +247,10 @@ const myClientWasm = await HistoryTools.createClientWasm({
 const request = myClientWasm.createQueryRequest(JSON.stringify(
     ['get.my.toks', {
         snapshot_block: ['head', 0],
-        code: 'alaio.token',
-        sym: 'ALA',
-        first_account: 'alaio',
-        last_account: 'alaio.zzzzzz',
+        code: 'eosio.token',
+        sym: 'EOS',
+        first_account: 'eosio',
+        last_account: 'eosio.zzzzzz',
         max_results: 10,
     }]
 ));

@@ -1,12 +1,12 @@
 There are many ways to retrieve data stored in smart contract tables.  A few are provided below.
 
 ## Get Table Rows
-In the example shown below, the `alaio.token` smart contract's table `accounts` is queried with the scope `testacc`.  The data is returned as **json**, in-order, and limited to **10 rows**.  The RAM payer for the returned row is also not shown.
+In the example shown below, the `eosio.token` smart contract's table `accounts` is queried with the scope `testacc`.  The data is returned as **json**, in-order, and limited to **10 rows**.  The RAM payer for the returned row is also not shown.
 ```javascript
 (async () => {
   await rpc.get_table_rows({
     json: true,               // Get the response as json
-    code: 'alaio.token',      // Contract that we target
+    code: 'eosio.token',      // Contract that we target
     scope: 'testacc',         // Account that owns the data
     table: 'accounts',        // Table name
     limit: 10,                // Maximum number of rows that we want to get
@@ -15,27 +15,27 @@ In the example shown below, the `alaio.token` smart contract's table `accounts` 
   });
 })();
 ```
-Above we console log the response from the ALAIO network.  An example of an expected response is shown below.
+Above we console log the response from the EOSIO network.  An example of an expected response is shown below.
 ```javascript
 {
-  rows: [ { balance: '68.3081 ALA' }, { balance: '200.0000 JUNGLE' } ],
+  rows: [ { balance: '68.3081 EOS' }, { balance: '200.0000 JUNGLE' } ],
   more: false
 }
 ```
-Note that since `more: false` was returned, if can be inferred that there are only 2 rows with scope `testacc` in the `accounts` table of the `alaio.token` smart contract.
+Note that since `more: false` was returned, if can be inferred that there are only 2 rows with scope `testacc` in the `accounts` table of the `eosio.token` smart contract.
 
 ## Get Currency Balance
 Rather than using the `get_table_rows` method, a token balance can also be retrieved using the `get_currency_balance` method.  This method takes an `account` which is a smart contract storing the tokens, an `account` who has a balance in the token table of the specified smart contract, and the `symbol` of the token to retrieve the currency balance for.
 
-In the example shown below, the balance of the user `testacc`'s tokens with the symbol `ALA` stored in the `alaio.token` smart contract is retrieved.
+In the example shown below, the balance of the user `testacc`'s tokens with the symbol `EOS` stored in the `eosio.token` smart contract is retrieved.
 ```javascript
 (async () => {
-  console.log(await rpc.get_currency_balance('alaio.token', 'testacc', 'ALA'));
+  console.log(await rpc.get_currency_balance('eosio.token', 'testacc', 'EOS'));
 })();
 ```
-Above we console log the response from the ALAIO network.  An example of an expected response is shown below.
+Above we console log the response from the EOSIO network.  An example of an expected response is shown below.
 ```javascript
-[ '68.3081 ALA' ]
+[ '68.3081 EOS' ]
 ```
 
 ## Query By Index
@@ -56,7 +56,7 @@ In the example shown below, the `contract` smart contract's table `profiles` is 
   }));
 })();
 ```
-Above we console log the response from the ALAIO network.  An example of an expected response is shown below.
+Above we console log the response from the EOSIO network.  An example of an expected response is shown below.
 ```javascript
 {
   "rows": [{

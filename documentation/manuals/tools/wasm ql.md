@@ -7,7 +7,7 @@
 #db filler, db, wasm-ql, web browser - db_wasmql_web_flow.dot
 #
 #notes: * to see image copy/paste to https://dreampuf.github.io/GraphvizOnline
-#       * image will be rendered by gatsby-remark-graphviz plugin in alaio docs.
+#       * image will be rendered by gatsby-remark-graphviz plugin in eosio docs.
 #
 #+----------+    +------------+    +---------------+       +-------------------+
 #| database |    | database   |    | wasm-ql       |       | web browser       |

@@ -3,7 +3,7 @@
 ---
 
 A wasm-ql system needs:
-* alanode running the state-history plugin, with either full or recent history
+* nodeos running the state-history plugin, with either full or recent history
 * A database: PostgreSQL or RocksDB
 * A database filler
 * 1 or more wasm-ql server processes
@@ -28,7 +28,7 @@ wasm-ql servers use the same connection methods and options as the [database fil
 
 ```
 cd build
-curl localhost:8880/v1/chain/get_table_rows -d '{"code":"alaio", "scope":"alaio", "table":"namebids", "show_payer":true, "json":true, "key_type": "name", "index_position": "2", "limit":100}' | json_pp
+curl localhost:8880/v1/chain/get_table_rows -d '{"code":"eosio", "scope":"eosio", "table":"namebids", "show_payer":true, "json":true, "key_type": "name", "index_position": "2", "limit":100}' | json_pp
 node ../src/test-client.js
 ```
 

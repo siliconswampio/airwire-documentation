@@ -1,11 +1,11 @@
-To vote for a block produder, [submit a transaction](01_how-to-submit-a-transaction.md) to the [`voteproducer`](https://github.com/ALADINIO/alaio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/alaio.system/include/alaio.system/alaio.system.hpp#L1130) action of the `alaio` account.
+To vote for a block produder, [submit a transaction](01_how-to-submit-a-transaction.md) to the [`voteproducer`](https://github.com/EOSIO/eosio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/eosio.system/include/eosio.system/eosio.system.hpp#L1130) action of the `eosio` account.
 
 In the example shown below `useraaaaaaaa` votes for producers `userbbbbbbbb` and `usercccccccc`.
 ```javascript
 (async () => {
   await api.transact({
     actions: [{
-      account: 'alaio',
+      account: 'eosio',
       name: 'voteproducer',
       authorization: [{
         actor: 'useraaaaaaaa',
@@ -31,7 +31,7 @@ In the example shown below `useraaaaaaaa` votes for producers `userbbbbbbbb` and
 (async () => {
   await api.transact({
     actions: [{
-      account: 'alaio',
+      account: 'eosio',
       name: 'voteproducer',
       authorization: [{
         actor: 'useraaaaaaaa',

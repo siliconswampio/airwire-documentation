@@ -7,23 +7,23 @@ Below are a number of ways a `rpc.get_info()` request can fail and what they cou
 (node:66636) UnhandledPromiseRejectionWarning: FetchError: invalid json response body at http://www.some-node-url.com/v1/chain/get_info reason: Unexpected token < in JSON at position 0
 ```
 
-This typically means you have connected to a computer that is not running ALAIO software.  For example, if you instantiate a `JsonRpc` object as follows:
+This typically means you have connected to a computer that is not running EOSIO software.  For example, if you instantiate a `JsonRpc` object as follows:
 
 ```javascript
 const rpc = new JsonRpc('http://some-node-url.com', { fetch });
 ```
 
-You would see the exception above when issuing a `rpc.get_info()` request since the computer at `http://some-node-url.com` is not running ALAIO software.
+You would see the exception above when issuing a `rpc.get_info()` request since the computer at `http://some-node-url.com` is not running EOSIO software.
 
 ## ETIMEDOUT
 ```javascript
 (node:68313) UnhandledPromiseRejectionWarning: FetchError: request to http://some-node-url.com:8000/v1/chain/get_info failed, reason: connect ETIMEDOUT 53.140.50.180:8000
 ```
 
-This typically implies you have connected to a node that *is* running ALAIO software, but have entered the incorrect port, or left off the port number altogether.
+This typically implies you have connected to a node that *is* running EOSIO software, but have entered the incorrect port, or left off the port number altogether.
 
 ## Indefinite Hanging
-If the `rpc.get_info()` request never returns, but also never throws an exception, it is likely that you've connected to a node running ALAIO software, but have misconfigured the protocol (http/https).
+If the `rpc.get_info()` request never returns, but also never throws an exception, it is likely that you've connected to a node running EOSIO software, but have misconfigured the protocol (http/https).
 
 ## Only absolute URLs are supported
 ```javascript

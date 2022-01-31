@@ -1,7 +1,7 @@
-To import `alaiojs` using [ES module syntax](https://en.wikipedia.org/wiki/ECMAScript) the following code is provided.
+To import `eosiojs` using [ES module syntax](https://en.wikipedia.org/wiki/ECMAScript) the following code is provided.
 ```javascript
-import { Api, JsonRpc } from 'alaiojs';
-import { JsSignatureProvider } from 'alaiojs/dist/alaiojs-jssig';  // development only
+import { Api, JsonRpc } from 'eosiojs';
+import { JsSignatureProvider } from 'eosiojs/dist/eosiojs-jssig';  // development only
 
 const privateKeys = [privateKey1];
 

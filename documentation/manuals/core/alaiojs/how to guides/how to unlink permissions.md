@@ -1,4 +1,4 @@
-To unlink an existing permission, [submit a transaction](01_how-to-submit-a-transaction.md) to the [`unlinkauth`](https://github.com/ALADINIO/alaio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/alaio.bios/include/alaio.bios/alaio.bios.hpp#L255) action of the `alaio` account.
+To unlink an existing permission, [submit a transaction](01_how-to-submit-a-transaction.md) to the [`unlinkauth`](https://github.com/EOSIO/eosio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/eosio.bios/include/eosio.bios/eosio.bios.hpp#L255) action of the `eosio` account.
 
 In the example shown below `useraaaaaaaa` unlinks the permissions present on the contract `useraaaaaaaa`'s `contract_action` action.
 ```javascript
@@ -11,7 +11,7 @@ const unlinkauth_input = {
 (async () => {
   await api.transact({
     actions: [{
-      account: 'alaio',
+      account: 'eosio',
       name: 'unlinkauth',
       authorization: [{
         actor: 'useraaaaaaaa',

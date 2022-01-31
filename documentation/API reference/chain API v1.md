@@ -439,7 +439,7 @@ key | description
 --- | ---
 code | NamePrivileged (string) or NameBasic (string) or NameBid (string) or NameCatchAll (string) (Name) 
 account | NamePrivileged (string) or NameBasic (string) or NameBid (string) or NameCatchAll (string) (Name)
-symbol | `string (Symbol) ^([0-9]{1,32}.[0-9]{4} [A-Z]{1,7})$ ` <br> A string representation of an ALAIO symbol, composed of a float with a precision of 4, and a symbol composed of capital letters between 1-7 letters separated by a space, example `1.0000 ABC`.
+symbol | `string (Symbol) ^([0-9]{1,32}.[0-9]{4} [A-Z]{1,7})$ ` <br> A string representation of an EOSIO symbol, composed of a float with a precision of 4, and a symbol composed of capital letters between 1-7 letters separated by a space, example `1.0000 ABC`.
 
 ### **Responses**
 
@@ -460,7 +460,7 @@ Retrieves currency stats
 key | description
 --- | ---
 code | NamePrivileged (string) or NameBasic (string) or NameBid (string) or NameCatchAll (string) (Name)
-symbol | `string (Symbol) ^([0-9]{1,32}.[0-9]{4} [A-Z]{1,7})$ ` <br> A string representation of an ALAIO symbol, composed of a float with a precision of 4, and a symbol composed of capital letters between 1-7 letters separated by a space, example `1.0000 ABC`.
+symbol | `string (Symbol) ^([0-9]{1,32}.[0-9]{4} [A-Z]{1,7})$ ` <br> A string representation of an EOSIO symbol, composed of a float with a precision of 4, and a symbol composed of capital letters between 1-7 letters separated by a space, example `1.0000 ABC`.
 
 ### **Responses**
 

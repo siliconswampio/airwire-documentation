@@ -1,6 +1,6 @@
-**Note** that [`history_get_transaction`](https://github.com/ALADINIO/alaiojs/blob/849c03992e6ce3cb4b6a11bf18ab17b62136e5c9/src/alaiojs-jsonrpc.ts#L205) below uses the deprecated `/v1/history/get_transaction` endpoint of a node.
+**Note** that [`history_get_transaction`](https://github.com/EOSIO/eosiojs/blob/849c03992e6ce3cb4b6a11bf18ab17b62136e5c9/src/eosiojs-jsonrpc.ts#L205) below uses the deprecated `/v1/history/get_transaction` endpoint of a node.
 
-To get a transaction's information, call [`history_get_transaction`](https://github.com/ALADINIO/alaiojs/blob/849c03992e6ce3cb4b6a11bf18ab17b62136e5c9/src/alaiojs-jsonrpc.ts#L205) on the rpc object passing in the transaction's id and optionally, it's block number as arguments.
+To get a transaction's information, call [`history_get_transaction`](https://github.com/EOSIO/eosiojs/blob/849c03992e6ce3cb4b6a11bf18ab17b62136e5c9/src/eosiojs-jsonrpc.ts#L205) on the rpc object passing in the transaction's id and optionally, it's block number as arguments.
 ```javascript
 (async () => {
   await rpc.history_get_transaction('b3598da4e007173e6d1b94d7be306299dd0a6813d114cf9a08c8e88a5756f1eb', 46632826)

@@ -117,19 +117,19 @@ const request0 = chainClientWasm.createQueryRequest(JSON.stringify(
 const request1 = chainClientWasm.createQueryRequest(JSON.stringify(
     ['account', {
         snapshot_block: ['head', 0],
-        first: 'alaio',
-        last: 'alaio.zzzzzz',
+        first: 'eosio',
+        last: 'eosio.zzzzzz',
         max_results: 100,
         include_code: false,
         include_abi: false,
     }]
 ));
 
-// Create a request: get tokens (from multiple contracts) owned by `alaio`
+// Create a request: get tokens (from multiple contracts) owned by `eosio`
 const request2 = tokenClientWasm.createQueryRequest(JSON.stringify(
     ['bal.mult.tok', {
         snapshot_block: ['head', 0],
-        account: 'alaio',
+        account: 'eosio',
         first_key: { sym: '', code: '' },
         last_key: { sym: 'ZZZZZZZ', code: 'zzzzzzzzzzzzj' },
         max_results: 10,

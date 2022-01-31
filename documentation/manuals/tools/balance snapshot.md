@@ -9,21 +9,21 @@ to a .csv file:
 * Pending stake refunds
 
 It automatically determines the system token from the system contract's `rammarket` table. This example makes the following assumptions:
-* The example `alaio.system` contract in https://github.com/ALADINIO/alaio.contracts is installed and initialized on the `alaio` account.
-* The example `alaio.token` contract in https://github.com/ALADINIO/alaio.contracts is installed on the `alaio.token` account and manages the system token.
+* The example `eosio.system` contract in https://github.com/EOSIO/eosio.contracts is installed and initialized on the `eosio` account.
+* The example `eosio.token` contract in https://github.com/EOSIO/eosio.contracts is installed on the `eosio.token` account and manages the system token.
 
-Note: use the `update_alaio_token_to_cdt1.6` branch (temporary) of `alaio.contracts` during build.
+Note: use the `update_eosio_token_to_cdt1.6` branch (temporary) of `eosio.contracts` during build.
 
 ## balance.snap.hpp
 
 ```cpp
 #pragma once
-#include <alaio/asset.hpp>
-#include <alaio/block_select.hpp>
+#include <eosio/asset.hpp>
+#include <eosio/block_select.hpp>
 
 struct base_request {
     uint32_t    block         = {};
-    alaio::name first_account = {};
+    eosio::name first_account = {};
 };
 
 STRUCT_REFLECT(base_request) {
@@ -36,7 +36,7 @@ struct get_staked_request : base_request {};
 struct get_refund_request : base_request {};
 
 struct balance {
-    alaio::name account = {};
+    eosio::name account = {};
     int64_t     amount  = {};
 };
 
@@ -47,9 +47,9 @@ STRUCT_REFLECT(balance) {
 
 struct base_response {
     std::vector<balance>       balances = {};
-    std::optional<alaio::name> more     = {};
+    std::optional<eosio::name> more     = {};
 
-    ALALIB_SERIALIZE(base_response, (balances)(more))
+    EOSLIB_SERIALIZE(base_response, (balances)(more))
 };
 
 STRUCT_REFLECT(base_response) {
@@ -61,91 +61,91 @@ struct get_liquid_response : base_response {};
 struct get_staked_response : base_response {};
 struct get_refund_response : base_response {};
 
-using balance_snap_query_request = alaio::tagged_variant<
-    alaio::serialize_tag_as_name,
-    alaio::tagged_type<"get.liquid"_n, get_liquid_request>,
-    alaio::tagged_type<"get.staked"_n, get_staked_request>,
-    alaio::tagged_type<"get.refund"_n, get_refund_request>>;
+using balance_snap_query_request = eosio::tagged_variant<
+    eosio::serialize_tag_as_name,
+    eosio::tagged_type<"get.liquid"_n, get_liquid_request>,
+    eosio::tagged_type<"get.staked"_n, get_staked_request>,
+    eosio::tagged_type<"get.refund"_n, get_refund_request>>;
 
-using balance_snap_query_response = alaio::tagged_variant<
-    alaio::serialize_tag_as_name,
-    alaio::tagged_type<"get.liquid"_n, get_liquid_response>,
-    alaio::tagged_type<"get.staked"_n, get_staked_response>,
-    alaio::tagged_type<"get.refund"_n, get_refund_response>>;
+using balance_snap_query_response = eosio::tagged_variant<
+    eosio::serialize_tag_as_name,
+    eosio::tagged_type<"get.liquid"_n, get_liquid_response>,
+    eosio::tagged_type<"get.staked"_n, get_staked_response>,
+    eosio::tagged_type<"get.refund"_n, get_refund_response>>;
 ```
 
 ## balance.snap-server.hpp
 
 ```cpp
 #include "balance.snap.hpp"
-#include <alaio/database.hpp>
-#include <alaio/input_output.hpp>
-#include <alaio/multi_index.hpp>
-#include <alaio/types.h>
+#include <eosio/database.hpp>
+#include <eosio/input_output.hpp>
+#include <eosio/multi_index.hpp>
+#include <eosio/types.h>
 
-#include <alaio.system/alaio.system.hpp>
+#include <eosio.system/eosio.system.hpp>
 
-// refunds table in alaio.system
-struct alaiosystem_refund_request {
-    alaio::name           owner;
-    alaio::time_point_sec request_time;
-    alaio::asset          net_amount;
-    alaio::asset          cpu_amount;
+// refunds table in eosio.system
+struct eosiosystem_refund_request {
+    eosio::name           owner;
+    eosio::time_point_sec request_time;
+    eosio::asset          net_amount;
+    eosio::asset          cpu_amount;
 };
 
 // Identify system token
-alaio::symbol get_system_token(uint32_t block) {
-    auto s = query_database(alaio::query_contract_row_range_code_table_scope_pk{
+eosio::symbol get_system_token(uint32_t block) {
+    auto s = query_database(eosio::query_contract_row_range_code_table_scope_pk{
         .snapshot_block = block,
         .first =
             {
-                .code        = "alaio"_n,
+                .code        = "eosio"_n,
                 .table       = "rammarket"_n,
-                .scope       = "alaio"_n.value,
+                .scope       = "eosio"_n.value,
                 .primary_key = 0,
             },
         .last =
             {
-                .code        = "alaio"_n,
+                .code        = "eosio"_n,
                 .table       = "rammarket"_n,
-                .scope       = "alaio"_n.value,
+                .scope       = "eosio"_n.value,
                 .primary_key = 0xffff'ffff'ffff'ffff,
             },
         .max_results = 100,
     });
 
-    alaio::symbol symbol;
+    eosio::symbol symbol;
     bool          found = false;
-    alaio::for_each_contract_row<alaiosystem::exchange_state>(s, [&](alaio::contract_row& r, auto* state) {
+    eosio::for_each_contract_row<eosiosystem::exchange_state>(s, [&](eosio::contract_row& r, auto* state) {
         if (r.present && state) {
-            alaio::check(!found, "Found more than 1 rammarket row");
+            eosio::check(!found, "Found more than 1 rammarket row");
             symbol = state->quote.balance.symbol;
             found  = true;
         }
         return true;
     });
-    alaio::check(found, "Didn't find a rammarket row");
+    eosio::check(found, "Didn't find a rammarket row");
     return symbol;
 }
 
 // Fetch liquid balances
-void process(get_liquid_request& req, const alaio::database_status& status) {
+void process(get_liquid_request& req, const eosio::database_status& status) {
     if (req.block < status.first || req.block > status.irreversible)
-        alaio::check(false, "requested block is out of range");
+        eosio::check(false, "requested block is out of range");
     auto system_token = get_system_token(req.block);
 
-    auto s = query_database(alaio::query_contract_row_range_code_table_pk_scope{
+    auto s = query_database(eosio::query_contract_row_range_code_table_pk_scope{
         .snapshot_block = req.block,
         .first =
             {
-                .code        = "alaio.token"_n,
+                .code        = "eosio.token"_n,
                 .table       = "accounts"_n,
                 .primary_key = system_token.code().raw(),
                 .scope       = req.first_account.value,
             },
         .last =
             {
-                .code        = "alaio.token"_n,
+                .code        = "eosio.token"_n,
                 .table       = "accounts"_n,
                 .primary_key = system_token.code().raw(),
                 .scope       = 0xffff'ffff'ffff'ffff,
@@ -154,70 +154,70 @@ void process(get_liquid_request& req, const alaio::database_status& status) {
     });
 
     get_liquid_response response;
-    alaio::for_each_contract_row<alaio::asset>(s, [&](alaio::contract_row& r, alaio::asset* a) {
+    eosio::for_each_contract_row<eosio::asset>(s, [&](eosio::contract_row& r, eosio::asset* a) {
         if (r.present && a)
-            response.balances.push_back(balance{alaio::name{r.scope}, a->amount});
+            response.balances.push_back(balance{eosio::name{r.scope}, a->amount});
         return true;
     });
     if (!response.balances.empty())
-        response.more = alaio::name{response.balances.back().account.value + 1};
-    alaio::set_output_data(pack(balance_snap_query_response{std::move(response)}));
+        response.more = eosio::name{response.balances.back().account.value + 1};
+    eosio::set_output_data(pack(balance_snap_query_response{std::move(response)}));
 }
 
 // Fetch staked balances
-void process(get_staked_request& req, const alaio::database_status& status) {
+void process(get_staked_request& req, const eosio::database_status& status) {
     if (req.block < status.first || req.block > status.irreversible)
-        alaio::check(false, "requested block is out of range");
+        eosio::check(false, "requested block is out of range");
     auto system_token = get_system_token(req.block);
 
-    auto s = query_database(alaio::query_contract_row_range_code_table_scope_pk{
+    auto s = query_database(eosio::query_contract_row_range_code_table_scope_pk{
         .snapshot_block = req.block,
         .first =
             {
-                .code        = "alaio"_n,
+                .code        = "eosio"_n,
                 .table       = "voters"_n,
-                .scope       = "alaio"_n.value,
+                .scope       = "eosio"_n.value,
                 .primary_key = req.first_account.value,
             },
         .last =
             {
-                .code        = "alaio"_n,
+                .code        = "eosio"_n,
                 .table       = "voters"_n,
-                .scope       = "alaio"_n.value,
+                .scope       = "eosio"_n.value,
                 .primary_key = 0xffff'ffff'ffff'ffff,
             },
         .max_results = 100,
     });
 
     get_staked_response response;
-    alaio::for_each_contract_row<alaiosystem::voter_info>(s, [&](alaio::contract_row& r, alaiosystem::voter_info* info) {
+    eosio::for_each_contract_row<eosiosystem::voter_info>(s, [&](eosio::contract_row& r, eosiosystem::voter_info* info) {
         if (r.present && info)
             response.balances.push_back(balance{info->owner, info->staked});
         return true;
     });
     if (!response.balances.empty())
-        response.more = alaio::name{response.balances.back().account.value + 1};
-    alaio::set_output_data(pack(balance_snap_query_response{std::move(response)}));
+        response.more = eosio::name{response.balances.back().account.value + 1};
+    eosio::set_output_data(pack(balance_snap_query_response{std::move(response)}));
 }
 
 // Fetch refund balances
-void process(get_refund_request& req, const alaio::database_status& status) {
+void process(get_refund_request& req, const eosio::database_status& status) {
     if (req.block < status.first || req.block > status.irreversible)
-        alaio::check(false, "requested block is out of range");
+        eosio::check(false, "requested block is out of range");
     auto system_token = get_system_token(req.block);
 
-    auto s = query_database(alaio::query_contract_row_range_code_table_scope_pk{
+    auto s = query_database(eosio::query_contract_row_range_code_table_scope_pk{
         .snapshot_block = req.block,
         .first =
             {
-                .code        = "alaio"_n,
+                .code        = "eosio"_n,
                 .table       = "refunds"_n,
                 .scope       = req.first_account.value,
                 .primary_key = 0,
             },
         .last =
             {
-                .code        = "alaio"_n,
+                .code        = "eosio"_n,
                 .table       = "refunds"_n,
                 .scope       = 0xffff'ffff'ffff'ffff,
                 .primary_key = 0xffff'ffff'ffff'ffff,
@@ -226,21 +226,21 @@ void process(get_refund_request& req, const alaio::database_status& status) {
     });
 
     get_refund_response response;
-    alaio::for_each_contract_row<alaiosystem_refund_request>(s, [&](alaio::contract_row& r, alaiosystem_refund_request* refund) {
+    eosio::for_each_contract_row<eosiosystem_refund_request>(s, [&](eosio::contract_row& r, eosiosystem_refund_request* refund) {
         if (r.present && refund)
             response.balances.push_back(balance{refund->owner, refund->net_amount.amount + refund->cpu_amount.amount});
         return true;
     });
     if (!response.balances.empty())
-        response.more = alaio::name{response.balances.back().account.value + 1};
-    alaio::set_output_data(pack(balance_snap_query_response{std::move(response)}));
+        response.more = eosio::name{response.balances.back().account.value + 1};
+    eosio::set_output_data(pack(balance_snap_query_response{std::move(response)}));
 }
 
-extern "C" __attribute__((alaio_wasm_entry)) void initialize() {}
+extern "C" __attribute__((eosio_wasm_entry)) void initialize() {}
 
 extern "C" void run_query() {
-    auto request = alaio::unpack<balance_snap_query_request>(alaio::get_input_data());
-    std::visit([](auto& x) { process(x, alaio::get_database_status()); }, request.value);
+    auto request = eosio::unpack<balance_snap_query_request>(eosio::get_input_data());
+    std::visit([](auto& x) { process(x, eosio::get_database_status()); }, request.value);
 }
 ```
 
@@ -248,21 +248,21 @@ extern "C" void run_query() {
 
 ```cpp
 #include "balance.snap.hpp"
-#include <alaio/input_output.hpp>
-#include <alaio/parse_json.hpp>
-#include <alaio/schema.hpp>
+#include <eosio/input_output.hpp>
+#include <eosio/parse_json.hpp>
+#include <eosio/schema.hpp>
 
-extern "C" __attribute__((alaio_wasm_entry)) void initialize() {}
-extern "C" void describe_query_request() { alaio::set_output_data(alaio::make_json_schema<balance_snap_query_request>()); }
-extern "C" void describe_query_response() { alaio::set_output_data(alaio::make_json_schema<balance_snap_query_response>()); }
+extern "C" __attribute__((eosio_wasm_entry)) void initialize() {}
+extern "C" void describe_query_request() { eosio::set_output_data(eosio::make_json_schema<balance_snap_query_request>()); }
+extern "C" void describe_query_response() { eosio::set_output_data(eosio::make_json_schema<balance_snap_query_response>()); }
 
 extern "C" void create_query_request() {
-    alaio::set_output_data(
-        pack(std::make_tuple("local"_n, "balance.snap"_n, alaio::parse_json<balance_snap_query_request>(alaio::get_input_data()))));
+    eosio::set_output_data(
+        pack(std::make_tuple("local"_n, "balance.snap"_n, eosio::parse_json<balance_snap_query_request>(eosio::get_input_data()))));
 }
 
 extern "C" void decode_query_response() {
-    alaio::set_output_data(to_json(alaio::unpack<balance_snap_query_response>(alaio::get_input_data())));
+    eosio::set_output_data(to_json(eosio::unpack<balance_snap_query_response>(eosio::get_input_data())));
 }
 ```
 
@@ -275,31 +275,31 @@ Use the CDT to build the WASMs:
 export HT_TOOLS_DIR=~/history-tools
 
 # Location of the CDT
-export CDT_DIR=/usr/local/alaio.cdt
+export CDT_DIR=/usr/local/eosio.cdt
 
-# Location of alaio.contracts
-export CONTRACTS_DIR=~/alaio.contracts
+# Location of eosio.contracts
+export CONTRACTS_DIR=~/eosio.contracts
 
-$CDT_DIR/bin/alaio-cpp                                                      \
+$CDT_DIR/bin/eosio-cpp                                                      \
     -Os                                                                     \
-    -I $CDT_DIR/include/alaiolib/capi                                       \
-    -I $HT_TOOLS_DIR/libraries/alaiolib/wasmql                              \
+    -I $CDT_DIR/include/eosiolib/capi                                       \
+    -I $HT_TOOLS_DIR/libraries/eosiolib/wasmql                              \
     -I $HT_TOOLS_DIR/external/abiala/external/date/include                  \
-    -I $CONTRACTS_DIR/contracts/alaio.system/include                        \
-    $HT_TOOLS_DIR/libraries/alaiolib/wasmql/alaio/temp_placeholders.cpp     \
+    -I $CONTRACTS_DIR/contracts/eosio.system/include                        \
+    $HT_TOOLS_DIR/libraries/eosiolib/wasmql/eosio/temp_placeholders.cpp     \
     -fquery-server                                                          \
-    --alaio-imports=$HT_TOOLS_DIR/libraries/alaiolib/wasmql/server.imports  \
+    --eosio-imports=$HT_TOOLS_DIR/libraries/eosiolib/wasmql/server.imports  \
     balance.snap-server.cpp                                                 \
     -o balance.snap-server.wasm
 
-$CDT_DIR/bin/alaio-cpp                                                      \
+$CDT_DIR/bin/eosio-cpp                                                      \
     -Os                                                                     \
-    -I $HT_TOOLS_DIR/libraries/alaiolib/wasmql                              \
+    -I $HT_TOOLS_DIR/libraries/eosiolib/wasmql                              \
     -I $HT_TOOLS_DIR/external/abiala/external/date/include                  \
-    -I $CONTRACTS_DIR/contracts/alaio.system/include                        \
-    $HT_TOOLS_DIR/libraries/alaiolib/wasmql/alaio/temp_placeholders.cpp     \
+    -I $CONTRACTS_DIR/contracts/eosio.system/include                        \
+    $HT_TOOLS_DIR/libraries/eosiolib/wasmql/eosio/temp_placeholders.cpp     \
     -fquery-client                                                          \
-    --alaio-imports=$HT_TOOLS_DIR/libraries/alaiolib/wasmql/client.imports  \
+    --eosio-imports=$HT_TOOLS_DIR/libraries/eosiolib/wasmql/client.imports  \
     balance.snap-client.cpp                                                 \
     -o balance.snap-client.wasm
 ```

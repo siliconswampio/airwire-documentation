@@ -2,7 +2,7 @@
 # Database Fillers
 ---
 
-The database fillers connect to the alanode state-history plugin and populate databases.
+The database fillers connect to the nodeos state-history plugin and populate databases.
 
 ## PostgreSQL vs. RocksDB
 
@@ -23,7 +23,7 @@ When running `fill-pg` for the first time, use the `--fpg-create` option to crea
 
 `fill-rocksdb` and `combo-rocksdb` automatically create a database if it doesn't exist; it doesn't have `drop` or `create` options.
 
-After starting, a filler will populate the database. It will track real-time updates from alanode after it catches up.
+After starting, a filler will populate the database. It will track real-time updates from nodeos after it catches up.
 
 Use SIGINT or SIGTERM to stop.
 
@@ -98,10 +98,10 @@ actions in the transaction, including ones that didn't pass.
 --fill-trx "+:executed:            :            :transfer"
 ```
 
-* Include all executed transfers. Includes only `alaio.token`:
+* Include all executed transfers. Includes only `eosio.token`:
 
 ```
---fill-trx "+:executed:            :alaio.token :transfer"
+--fill-trx "+:executed:            :eosio.token :transfer"
 ```
 
 * Include all executed transfers which notify specific accounts. Includes all token contracts:
@@ -111,11 +111,11 @@ actions in the transaction, including ones that didn't pass.
 --fill-trx "+:executed:myaccount2  :            :transfer"
 ```
 
-* Include all executed transfers which notify specific accounts. Only includes `alaio.token`:
+* Include all executed transfers which notify specific accounts. Only includes `eosio.token`:
 
 ```
---fill-trx "+:executed:myaccount1  :alaio.token :transfer"
---fill-trx "+:executed:myaccount2  :alaio.token :transfer"
+--fill-trx "+:executed:myaccount1  :eosio.token :transfer"
+--fill-trx "+:executed:myaccount2  :eosio.token :transfer"
 ```
 
 ## PostgreSQL configuration

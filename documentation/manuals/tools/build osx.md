@@ -28,7 +28,7 @@ ld: warning: direct access in function ... to global weak symbol ... from file .
 
 ```
 cd ~
-git clone --recursive https://github.com/ALADINIO/history-tools.git
+git clone --recursive https://github.com/EOSIO/history-tools.git
 cd history-tools
 mkdir build
 cd build
@@ -41,7 +41,7 @@ bash -c "cd ../src && npm install node-fetch"
 
 ```
 cd ~
-git clone --recursive https://github.com/ALADINIO/history-tools.git
+git clone --recursive https://github.com/EOSIO/history-tools.git
 cd history-tools
 mkdir build
 cd build

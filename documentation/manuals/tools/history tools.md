@@ -1,28 +1,28 @@
-# ALAIO History Tools ![ALAIO Alpha](https://img.shields.io/badge/ALAIO-Alpha-blue.svg)
+# EOSIO History Tools ![EOSIO Alpha](https://img.shields.io/badge/EOSIO-Alpha-blue.svg)
 
-The ALAIO History Tools is a legacy, proof-of-concept (PoC) application that demonstrates scalable and efficient access to finalized blockchain data via the alanode state-history plugin.
+The EOSIO History Tools is a legacy, proof-of-concept (PoC) application that demonstrates scalable and efficient access to finalized blockchain data via the nodeos state-history plugin.
 
 > Disclaimer]]
-| History Tools was originally devised as a PoC to request community feedback. Therefore, some of its components have been or will be integrated with future versions of the ALAIO software.
+| History Tools was originally devised as a PoC to request community feedback. Therefore, some of its components have been or will be integrated with future versions of the EOSIO software.
 
 ## Migration Notice
 
-The following History Tools components have been migrated to the following ALAIO repositories:
+The following History Tools components have been migrated to the following EOSIO repositories:
 * `rodala` (formerly `combo-rocksdb`, `fill-rocksdb`, `wasm-ql-rocksdb`):
-  * service daemon: https://github.com/ALADINIO/ala
+  * service daemon: https://github.com/EOSIO/ala
 * `wasm-ql`:
-  * rodala support: https://github.com/ALADINIO/ala
-  * alanode support: https://github.com/ALADINIO/ala
-  * cdt support: https://github.com/ALADINIO/alaio.cdt
+  * rodala support: https://github.com/EOSIO/ala
+  * nodeos support: https://github.com/EOSIO/ala
+  * cdt support: https://github.com/EOSIO/eosio.cdt
 * `abi-wasm`:
-  * cdt support: https://github.com/ALADINIO/alaio.cdt
-  * alaiojs support: https://github.com/ALADINIO/alaiojs
+  * cdt support: https://github.com/EOSIO/eosio.cdt
+  * eosiojs support: https://github.com/EOSIO/eosiojs
 
 ## Components
 
 History Tools consists of the following components:
 
-* **database fillers** -  connect to the alanode state-history plugin and populate databases
+* **database fillers** -  connect to the nodeos state-history plugin and populate databases
 * **wasm-ql servers** - answer incoming queries by running server WASMs, which have read-only access to the databases
 * **wasm-ql library** - when combined with the CDT library, provides utilities that server WASMs and client WASMs need
 * **examples** of server WASMs and client WASMs
@@ -40,8 +40,8 @@ Note: by default, `history-tools` does nothing; use the `--plugin` option to sel
 
 ## Alpha Release
 
-This is an alpha release of the ALAIO History Tools. It includes database fillers
-(`fill-pg`, `fill-rocksdb`) which pull data from alanode's State History Plugin, and a new
+This is an alpha release of the EOSIO History Tools. It includes database fillers
+(`fill-pg`, `fill-rocksdb`) which pull data from nodeos's State History Plugin, and a new
 query engine (`wasm-ql-pg`, `wasm-ql-rocksdb`) which supports queries defined by wasm, along
 with an emulation of the legacy `/v1/` RPC API.
 
@@ -52,7 +52,7 @@ useful. Please create issues about changes you'd like to see going forward.
 Since this is an alpha release, it will likely have incompatible changes in the
 future. Some of these may be driven by community feedback.
 
-This release supports alanode 1.8.x. It does not support 1.7.x or the 1.8 RC versions. This release
+This release supports nodeos 1.8.x. It does not support 1.7.x or the 1.8 RC versions. This release
 includes the following:
 
 ### Alpha 0.3.0
@@ -69,7 +69,7 @@ like to test rocksdb support or wasm-ql support, stick with Nodala 1.8 and the A
 
 * There are now 2 self-contained demonstrations in public Docker images. See [container-demos](doc/container-demos.md) for details.
   * Talk: this demonstrates using wasm-ql to provide messages from on-chain conversations to clients in threaded order.
-  * Partial history: this demonstrates some of wasm-ql's chain and token queries on data drawn from one of the public ALAIO networks.
+  * Partial history: this demonstrates some of wasm-ql's chain and token queries on data drawn from one of the public EOSIO networks.
 * Added RocksDB and removed LMDB. This has the following advantages:
   * Filling outperforms both PostgreSQL and LMDB by considerable margins, both for partial history
     and for full history on large well-known chains.
@@ -85,7 +85,7 @@ like to test rocksdb support or wasm-ql support, stick with Nodala 1.8 and the A
 
 ### fill-pg
 
-`fill-pg` fills postgresql with data from alanode's State History Plugin. It provides nearly all
+`fill-pg` fills postgresql with data from nodeos's State History Plugin. It provides nearly all
 data that applications which monitor the chain need. It provides the following:
 
 * Header information from each block
@@ -109,10 +109,10 @@ don't need the blocks since:
   applications need to handle these, so should examine the traces instead. e.g. many transfers
   live in the inline actions and deferred transactions that blocks exclude.
 * Most apps don't verify block signatures. If they do, then they should connect directly to
-  alanode's State History Plugin to get the necessary data. Note that contrary to
+  nodeos's State History Plugin to get the necessary data. Note that contrary to
   popular belief, the data returned by the `/v1/get_block` RPC API is insufficient for
   signature verification since it uses a lossy JSON conversion.
-* Most apps which currently use the `/v1/get_block` RPC API (e.g. `alaiojs`) only need a tiny
+* Most apps which currently use the `/v1/get_block` RPC API (e.g. `eosiojs`) only need a tiny
   subset of the data within block; `fill-pg` stores this data. There are apps which use
   `/v1/get_block` incorrectly since their authors didn't realize the blocks miss
   critical data that their applications need.
@@ -123,11 +123,11 @@ history of the chain, or save space by only covering recent history.
 
 ### wasm-ql-pg
 
-ALAIO contracts store their data in a format which is convenient for them, but hard
+EOSIO contracts store their data in a format which is convenient for them, but hard
 on general-purpose query engines. e.g. the `/v1/get_table_rows` RPC API struggles to provide 
 all the necessary query options that applications need. `wasm-ql-pg` allows contract authors
 and application authors to design their own queries using the same 
-[toolset](https://github.com/ALADINIO/alaio.cdt) that they use to design contracts. This
+[toolset](https://github.com/EOSIO/eosio.cdt) that they use to design contracts. This
 gives them full access to current contract state, a history of contract state, and the
 history of actions for that contract. `fill-pg` preserves this data in its original
 format to support `wasm-ql-pg`.

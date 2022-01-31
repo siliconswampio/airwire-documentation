@@ -70,27 +70,27 @@ make -j10
 make -j10 install
 ```
 
-# Install alaio 1.8.1
+# Install eosio 1.8.1
 
 ```
 cd ~
-wget https://github.com/ALADINIO/ala/releases/download/v1.8.10/alaio_1.8.10-1-ubuntu-18.04_amd64.deb
-sudo apt install -y ./alaio_1.8.10-1-ubuntu-18.04_amd64.deb
+wget https://github.com/EOSIO/ala/releases/download/v1.8.10/eosio_1.8.10-1-ubuntu-18.04_amd64.deb
+sudo apt install -y ./eosio_1.8.10-1-ubuntu-18.04_amd64.deb
 ```
 
 # Install CDT 1.6.2
 
 ```
 cd ~
-wget https://github.com/ALADINIO/alaio.cdt/releases/download/v1.6.2/alaio.cdt_1.6.2-1-ubuntu-18.04_amd64.deb
-sudo apt install -y ./alaio.cdt_1.6.2-1-ubuntu-18.04_amd64.deb
+wget https://github.com/EOSIO/eosio.cdt/releases/download/v1.6.2/eosio.cdt_1.6.2-1-ubuntu-18.04_amd64.deb
+sudo apt install -y ./eosio.cdt_1.6.2-1-ubuntu-18.04_amd64.deb
 ```
 
 # Build History Tools
 
 ```
 cd ~
-git clone --recursive https://github.com/ALADINIO/history-tools.git
+git clone --recursive https://github.com/EOSIO/history-tools.git
 cd history-tools
 mkdir build
 cd build

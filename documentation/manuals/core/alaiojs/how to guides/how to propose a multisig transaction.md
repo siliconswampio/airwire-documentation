@@ -1,14 +1,14 @@
-To propose a transaction, [submit a transaction](01_how-to-submit-a-transaction.md) to the [`propose`](https://github.com/ALADINIO/alaio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/alaio.msig/include/alaio.msig/alaio.msig.hpp#L39) action of the `alaio.msig` account.
+To propose a transaction, [submit a transaction](01_how-to-submit-a-transaction.md) to the [`propose`](https://github.com/EOSIO/eosio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/eosio.msig/include/eosio.msig/eosio.msig.hpp#L39) action of the `eosio.msig` account.
 
 ## Serializing Actions
-The `data` field of the `propose` action has a `tx` field, which is a [`transaction`](https://github.com/ALADINIO/alaio.contracts/blob/6ca72e709faba179726a20571929a9eeaea47d08/tests/test_contracts/alaio.msig.old/alaio.msig.abi#L48) type.  This `transaction` type contains an [`action`](https://github.com/ALADINIO/alaio.contracts/blob/6ca72e709faba179726a20571929a9eeaea47d08/tests/test_contracts/alaio.msig.old/alaio.msig.abi#L21) type, which contains [`bytes`](https://github.com/ALADINIO/alaio.contracts/blob/6ca72e709faba179726a20571929a9eeaea47d08/tests/test_contracts/alaio.msig.old/alaio.msig.abi#L27) as it's `data` field.  Because of this, we must first serialize a list of [`action`](https://github.com/ALADINIO/alaio.contracts/blob/6ca72e709faba179726a20571929a9eeaea47d08/tests/test_contracts/alaio.msig.old/alaio.msig.abi#L21) objects.
+The `data` field of the `propose` action has a `tx` field, which is a [`transaction`](https://github.com/EOSIO/eosio.contracts/blob/6ca72e709faba179726a20571929a9eeaea47d08/tests/test_contracts/eosio.msig.old/eosio.msig.abi#L48) type.  This `transaction` type contains an [`action`](https://github.com/EOSIO/eosio.contracts/blob/6ca72e709faba179726a20571929a9eeaea47d08/tests/test_contracts/eosio.msig.old/eosio.msig.abi#L21) type, which contains [`bytes`](https://github.com/EOSIO/eosio.contracts/blob/6ca72e709faba179726a20571929a9eeaea47d08/tests/test_contracts/eosio.msig.old/eosio.msig.abi#L27) as it's `data` field.  Because of this, we must first serialize a list of [`action`](https://github.com/EOSIO/eosio.contracts/blob/6ca72e709faba179726a20571929a9eeaea47d08/tests/test_contracts/eosio.msig.old/eosio.msig.abi#L21) objects.
 
 ## serializeActions
-In the example shown below, a transaction for the `alaio` `updateauth` action is serialized using the `api` object's `serializeActions` method.
+In the example shown below, a transaction for the `eosio` `updateauth` action is serialized using the `api` object's `serializeActions` method.
 ```javascript
 const actions = [
   {
-    account: 'alaio',
+    account: 'eosio',
     name: 'updateauth',
     authorization: [
       {
@@ -43,7 +43,7 @@ An example output of `serialized_actions` call made above is shown below.
 ```javascript
 [
   {
-    account: 'alaio',
+    account: 'eosio',
     name: 'updateauth',
     authorization: [ [Object] ],
     data: 'F0F0C30F3FFCF0C300000000A8ED3232000000000000000001000000010003FD9ABF3D22615D5621BF74D2D0A652992DE1338E552AD85D5EAF1F39DCAADDB301000000'
@@ -54,7 +54,7 @@ An example output of `serialized_actions` call made above is shown below.
 ## Propose Input
 In the example shown below, the `serialized_actions` list created above is used in the `actions` field of the `proposeInput`'s `trx` field.
 
-[Below](#propose) `useraaaaaaaa` proposes a multi-sig transaction, which calls the `updateauth` action of the `alaio` account (see [`actions`](#serializeactions) above).  This proposal is called `changeowner` and both `useraaaaaaaa` and `userbbbbbbbb` must sign the multi-sig transaction before `2019-09-14T16:39:15`.
+[Below](#propose) `useraaaaaaaa` proposes a multi-sig transaction, which calls the `updateauth` action of the `eosio` account (see [`actions`](#serializeactions) above).  This proposal is called `changeowner` and both `useraaaaaaaa` and `userbbbbbbbb` must sign the multi-sig transaction before `2019-09-14T16:39:15`.
 ```javascript
 const proposeInput = {
     proposer: 'useraaaaaaaa',
@@ -84,11 +84,11 @@ const proposeInput = {
 ```
 
 ## Propose
-In the example below, a transaction is submitted to the `propose` action of the `alaio.msig` contract using the `proposeInput` object created [above](#propose-input).
+In the example below, a transaction is submitted to the `propose` action of the `eosio.msig` contract using the `proposeInput` object created [above](#propose-input).
 ```javascript
 await api.transact({
   actions: [{
-    account: 'alaio.msig',
+    account: 'eosio.msig',
     name: 'propose',
     authorization: [{
       actor: 'useraaaaaaaa',
@@ -111,7 +111,7 @@ Below all three steps to propose a multi-sig transaction are provided.
 // CREATE ACTION TO PROPOSE
 const actions = [
   {
-    account: 'alaio',
+    account: 'eosio',
     name: 'updateauth',
     authorization: [
       {
@@ -170,7 +170,7 @@ const actions = [
   //PROPOSE THE TRANSACTION
   const result = await api.transact({
     actions: [{
-      account: 'alaio.msig',
+      account: 'eosio.msig',
       name: 'propose',
       authorization: [{
         actor: 'useraaaaaaaa',

@@ -1,7 +1,7 @@
-To import `alaiojs` using commonjs syntax follow the code below.
+To import `eosiojs` using commonjs syntax follow the code below.
 ```javascript
-const { Api, JsonRpc } = require('alaiojs');
-const { JsSignatureProvider } = require('alaiojs/dist/alaiojs-jssig');  // development only
+const { Api, JsonRpc } = require('eosiojs');
+const { JsSignatureProvider } = require('eosiojs/dist/eosiojs-jssig');  // development only
 const fetch = require('node-fetch'); //node only
 const { TextDecoder, TextEncoder } = require('util'); //node only
 

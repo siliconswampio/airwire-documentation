@@ -1,10 +1,10 @@
 To submit a transaction, call `transact` on the api object, passing in two parameters.
 
-The first parameter specifies the actions in the transaction, and their corresponding authorizations, as well as any data necessary for the action to execute.  An example for the [`buyrambytes` action](https://github.com/ALADINIO/alaio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/alaio.system/include/alaio.system/alaio.system.hpp#L1028) is shown below.
+The first parameter specifies the actions in the transaction, and their corresponding authorizations, as well as any data necessary for the action to execute.  An example for the [`buyrambytes` action](https://github.com/EOSIO/eosio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/eosio.system/include/eosio.system/eosio.system.hpp#L1028) is shown below.
 ```javascript
 { 
    actions: [{
-     account: 'alaio',
+     account: 'eosio',
      name: 'buyrambytes',
      authorization: [{
        actor: 'useraaaaaaaa',
@@ -18,7 +18,7 @@ The first parameter specifies the actions in the transaction, and their correspo
    }]
 }
 ```
-The second parameter is an [optional configuration object parameter](https://github.com/ALADINIO/alaiojs/blob/master/src/alaiojs-api.ts#L215).  This optional parameter can override the default values of `broadcast: true` and `sign: true`, and can be used to fill [TAPOS](https://alaio.stackexchange.com/questions/2362/what-is-transaction-as-proof-of-stake-tapos-and-when-would-a-smart-contract) fields with the specified `expireSeconds` and either `blocksBehind` or `useLastIrreversible` if necessary.  A combination of these fields are required if the first parameter specified above does not itself contain the TAPOS fields `expiration`, `ref_block_num`, and `ref_block_prefix`.  In this case it does not, so the fields are necessary.
+The second parameter is an [optional configuration object parameter](https://github.com/EOSIO/eosiojs/blob/master/src/eosiojs-api.ts#L215).  This optional parameter can override the default values of `broadcast: true` and `sign: true`, and can be used to fill [TAPOS](https://eosio.stackexchange.com/questions/2362/what-is-transaction-as-proof-of-stake-tapos-and-when-would-a-smart-contract) fields with the specified `expireSeconds` and either `blocksBehind` or `useLastIrreversible` if necessary.  A combination of these fields are required if the first parameter specified above does not itself contain the TAPOS fields `expiration`, `ref_block_num`, and `ref_block_prefix`.  In this case it does not, so the fields are necessary.
 ```javascript
 {
   blocksBehind: 3,
@@ -31,7 +31,7 @@ The transaction will reference the block 3 blocks behind the head block, and wil
 (async () => {
   await api.transact({
    actions: [{
-     account: 'alaio',
+     account: 'eosio',
      name: 'buyrambytes',
      authorization: [{
        actor: 'useraaaaaaaa',
@@ -58,7 +58,7 @@ Alternatively, the transaction could be submitted without the optional configura
    ref_block_num: '50477227',
    ref_block_prefix: '1022379673',
    actions: [{
-     account: 'alaio',
+     account: 'eosio',
      name: 'buyrambytes',
      authorization: [{
        actor: 'useraaaaaaaa',

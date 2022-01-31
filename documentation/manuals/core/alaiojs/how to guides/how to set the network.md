@@ -1,4 +1,4 @@
-To change the network used by `alaiojs`, pass in the URL of a node connected to the network of interest to `JsonRpc`.
+To change the network used by `eosiojs`, pass in the URL of a node connected to the network of interest to `JsonRpc`.
 
 In the examples shown in the `basic-usage` section, it was assumed that a local node running on port `8888` was used.
 ```javascript
