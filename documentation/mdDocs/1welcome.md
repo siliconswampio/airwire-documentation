@@ -1,4 +1,4 @@
-# AirWire
+# Wire
 
 Blockchain is uniquely positioned to solve the problems currently facing the internet as we know it. AirWire is a multifaceted cryptocurrency platform relaunched under a beta release. The AirWire blockchain is the pioneer in rewards, earnings and crypto mass-adoption technology. The platform implements an innovative approach with its unique blend of features and technical advantages. It features zero transaction fees for all transactions, human readability and a system for users to earn rewards. AirWire enables several use cases such as no fees at all to mint NFTs and a marketplace to list them for sale. In the AirWire market, you can trade with friends, transfer tokens and more for absolutely no cost to you. The problem users today face is that Ethereum transactions cost gas or money, which fluctuates based on traffic. AirWire's marketplace allows you to own NFTs without the hassle of gas fees and the accessibility to sign transactions interoperably using any blockchain account.
 
